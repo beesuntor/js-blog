@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Oswald:400,600|Sacramento|Source+Sans+Pro:300&subset=latin-ext');
+@import url("https://fonts.googleapis.com/css?family=Oswald:400,600|Sacramento|Source+Sans+Pro:300&subset=latin-ext");
 /* Variables */
 /* Global */
 *,
@@ -9,7 +9,7 @@
 
 body {
   background: #fff;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   color: #444;
   font-weight: 300;
   font-size: 16px;
@@ -24,7 +24,7 @@ body {
 .section-title {
   font-size: 22px;
   text-transform: uppercase;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 600;
 }
 .section-title span {
@@ -58,7 +58,7 @@ body {
 
 /* Logo */
 .logo {
-  font-family: 'Sacramento', cursive;
+  font-family: "Sacramento", cursive;
   font-weight: 400;
   font-size: 104px;
   line-height: 1;
