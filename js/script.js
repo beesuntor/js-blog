@@ -47,7 +47,8 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
   // eslint-disable-next-line no-unused-vars
-  optArticleAuthorSelector = '.post-author';
+  optArticleAuthorSelector = '.post-author',
+  optTagsListSelector = '.list.tags';
 
 /* [DONE] remove contents of titleList */
 function generateTitleLinks(customSelector = '') {
@@ -96,6 +97,8 @@ function generateTitleLinks(customSelector = '') {
 generateTitleLinks();
 
 function generateTags() {
+  /* [NEW] create a new variable allTags with an empty object */
+  let allTags = {};
   /* find all articles */
   const articles = document.querySelectorAll(optArticleSelector);
   /* START LOOP: for every article: */
@@ -117,12 +120,40 @@ function generateTags() {
         '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>';
       /* add generated code to html variable */
       html = html + linkHTML;
+      /* [NEW] check if this link is NOT already in allTags */
+      if (!allTags.hasOwnProperty(tag)) {
+        /* [NEW] add tag to allTags object */
+        allTags[tag] = 1;
+      } else {
+        allTags[tag]++;
+      }
       /* END LOOP: for each tag */
     }
     /* insert HTML of all the links into the tags wrapper */
     tagsWrapper.innerHTML = html;
     /* END LOOP: for every article: */
   }
+  /* [NEW] find list of tags in right column */
+  const tagList = document.querySelector(optTagsListSelector);
+
+  /* [NEW] create variable for all links HTML code */
+  let allTagsHTML = '';
+  // [NEW] Start Loop: for each tag in allTags:
+  for (let tag in allTags) {
+    /* [NEW] Generate HTML code with class for cloud tags */
+    allTagsHTML +=
+      '<a href="#tag-' +
+      tag +
+      '"> ' +
+      tag +
+      ' </a> (' +
+      allTags[tag] +
+      ') </br>';
+  }
+  // [NEW]  END LOOP: for each tag in allTags:
+
+  // [NEW] add HTML from allTagsHTML to tagList
+  tagList.innerHTML = allTagsHTML;
 }
 generateTags();
 function tagClickHandler(event) {
